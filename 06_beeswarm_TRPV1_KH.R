@@ -1,6 +1,7 @@
 # ============================================================
-# BEESWARM PLOT SCRIPT — EXPLAINED -- xx KH
+# BEESWARM PLOT SCRIPT — EXPLAINED -- KH
 # TRPV1 RNA-seq dataset: visualization of top 4 DEGs (up/down)
+# beeswarm packages basically creates boxplots
 # Notes:
 #  • Object names, filenames my own, logic same as in Kls scripts
 #  • Code reorganized and commented for clarity to best of my knowledge - no guarantee.
