@@ -1,5 +1,5 @@
 # ============================================================
-# VENN DIAGRAM ANALYSIS SCRIPT — EXPLAINED -- xx KH
+# VENN DIAGRAM ANALYSIS SCRIPT — EXPLAINED -- KH
 # TRPV1 RNA-seq dataset: DEG overlap visualization and extraction
 # Notes:
 #  • Object names, filenames, and logic unchanged.
