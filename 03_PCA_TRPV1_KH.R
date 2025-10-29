@@ -1,5 +1,5 @@
 # ============================================================
-# PCA ANALYSIS SCRIPT — EXPLAINED -- xx KH
+# PCA ANALYSIS SCRIPT — EXPLAINED -- KH
 # TRPV1 RNA-seq dataset: PCA visualization of normalized counts
 # Notes:
 #  • Object names, filenames, and logic unchanged.
