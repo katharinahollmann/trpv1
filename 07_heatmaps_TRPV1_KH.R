@@ -1,5 +1,5 @@
 ################################################################################
-# HEATMAP SCRIPT — EXPLAINED — xx KH
+# HEATMAP SCRIPT — EXPLAINED — KH
 # TRPV1 RNA-seq dataset: heatmaps of DEGs (per DESeq2 contrast) and an
 # intersect-gene set; uses gplots::heatmap.2
 #
