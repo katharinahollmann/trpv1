@@ -1,8 +1,8 @@
 ################################################################################################
-# DIFFERENTIAL EXPRESSION COMPARISON SCRIPT — EXPLAINED — xx KH
+# DIFFERENTIAL EXPRESSION COMPARISON SCRIPT — EXPLAINED — KH
 # TRPV1 RNA-seq | DEG selection, export lists, and CLP vs TRPV1 KO CLP comparisons
 #
-# Notes on preserved objects (unchanged):
+# Notes on objects:
 # - all_data, all_deseq : file discovery
 # - clpKO, clp : chosen DESeq2 results files (indices preserved)
 # - title : derived label for plots
@@ -14,7 +14,7 @@
 # - deg_export_* : compact export tables for merging / plotting
 # - deg_*_merged(_log2FC) : merged tables by gene_symbol for cross-contrast scatter plots
 #
-# Brief interpretive notes are added inline (biological/analytical context) without changing logic.
+# Brief interpretive notes are added inline (biological/analytical context) 
 ################################################################################################
 
 
@@ -393,6 +393,5 @@ ggsave("scatterDOWNKO_labeledover2diff.pdf", width = 6, height = 4.5)
 
 
 ################################################################################################
-# END — Script preserves your logic, object names, and file indices.
-# Added explanatory headers.
+# END
 ################################################################################################
