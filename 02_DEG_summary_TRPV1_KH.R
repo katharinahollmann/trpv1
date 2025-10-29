@@ -1,5 +1,5 @@
 # ============================================================
-# TRPV1 DEG SUMMARY SCRIPT — EXPLAINED -- xx KH
+# TRPV1 DEG SUMMARY SCRIPT — EXPLAINED -- KH
 # Purpose: Summarize DESeq2 results for all TRPV1 contrasts,
 #           count up-/downregulated genes, and visualize.
 # ============================================================
@@ -10,7 +10,7 @@
 # Adjust the path to your system if needed
 # To find your absolute path in Terminal: navigate to your folder, run `pwd`, paste below.
 # Generated outputs are written to this folder unless a different path is set in write commands.
-setwd("/Users/katharinahollmann/GitHubDesktop/Projects/Wagner_comparative_analyses/TRPV1/data")
+setwd("/Users/katharinahollmann/GitHubDesktop/Wagner_comparative_analyses/TRPV1/data")
 
 # List all files to confirm available datasets
 dir()
@@ -21,6 +21,16 @@ deseq_files <- grep("DESeq2", allfiles, value = TRUE)   # list files containing 
 deseq_files
 deseq_files <- deseq_files[c(5:9)]                      # select only DEG result files
 deseq_files
+
+#what is the log2fc of trpv1 here?
+wt_clp <- read.table(deseq_files[5], header = TRUE)
+
+dim(wt_clp)
+names(wt_clp)
+
+trpv1_wt_clp <- wt_clp[wt_clp$gene_symbol == "Trpv1", ]
+trpv1_wt_clp #2.629654
+
 
 ### 2. CREATE EMPTY MATRIX TO STORE RESULTS -------------------------------
 
@@ -101,10 +111,10 @@ mat2 <- read.table("DEG_DESeq2_summary_table_080925.txt", header = TRUE)
 # Rename rows for readability in the plot
 new_names <- c(
   "WT CLP vs WT Sham",
-  "Trpv1-/- CLP vs WT Sham",
-  "Trpv1-/- CLP vs Trpv1-/- Sham",
-  "Trpv1-/- CLP vs WT CLP",
-  "Trpv1-/- Sham vs WT Sham"
+  "KO CLP vs WT Sham",
+  "KO CLP vs KO Sham",
+  "KO CLP vs WT CLP",
+  "KO Sham vs WT Sham"
 )
 row.names(mat2) <- new_names
 lab1 <- as.character(row.names(mat2))
@@ -130,6 +140,7 @@ df_long <- pivot_longer(mat2, cols = c("UP", "DOWN"),
 
 # Preserve order of input comparisons
 df_long$Comparison <- fct_inorder(df_long$Comparison)
+df_long$Category <- factor(df_long$Category, levels = c("UP", "DOWN"))
 
 # Bar plot of up/downregulated genes per comparison
 b <- ggplot(df_long, aes(x = Comparison, y = Count, fill = Category)) +
@@ -138,7 +149,7 @@ b <- ggplot(df_long, aes(x = Comparison, y = Count, fill = Category)) +
     x = "Comparison of Groups",
     y = "Number of DEGs",
     title = "DEG summary TRPV1",
-    subtitle = "Up- and downregulated DEGs per group comparison"
+    subtitle = "up- and downregulated DEGs per group comparison"
   ) +
   scale_fill_manual(values = c("UP" = "red", "DOWN" = "blue")) +
   labs(fill = "Regulation") +
@@ -152,7 +163,7 @@ b <- ggplot(df_long, aes(x = Comparison, y = Count, fill = Category)) +
 b  # display plot
 
 # Export high-quality figures for publication or reports
-ggsave("2809barplotDEGsummaryKOneworder.pdf", plot = b,
+ggsave("2610barplotDEGsummaryKOneworder.pdf", plot = b,
        device = "pdf", width = 4.3, height = 6, units = "in")
 
 ggsave("barplotDEGsummaryKOneworder2.png", plot = b,
