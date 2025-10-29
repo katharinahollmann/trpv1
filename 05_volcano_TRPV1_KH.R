@@ -1,5 +1,5 @@
 # ============================================================
-# VOLCANO PLOT SCRIPT — EXPLAINED -- xx KH
+# VOLCANO PLOT SCRIPT — EXPLAINED -- KH
 # TRPV1 RNA-seq dataset: DEG visualization and top-20 gene extraction
 # Notes:
 #  • Object names, filenames my own, logic unchanged to first skript from Kls
