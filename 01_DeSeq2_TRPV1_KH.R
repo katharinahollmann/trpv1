@@ -1,5 +1,5 @@
 # =========================================================================
-# THIS IS KATS DESEQ SKRIPT —— EXPLAINED -- xx KH 
+# THIS IS KATS DESEQ SKRIPT —— EXPLAINED -- KH 
 # TRPV1 RNA-seq workflow: normalization, DEG calling, QC, export
 # Notes:
 #  • Object names, file names, and commands preserved exactly.
@@ -283,7 +283,49 @@ lapply(contrasts, function(x) run_contrast(dds, raw_counts, x[1], x[2]))
 
 results(dds)
 
+norms <- counts(dds, normalized = TRUE)
+summary(norms)
+
+head(norms)
+row.names(norms) <- raw_counts$gene_symbol
+head(norms)
+
+trpv1row <- norms["Trpv1", ]
+
+trpv1row
+
+######### i want to visualize normalized counts dds #########
+library(ggplot2)
+library(tidyr)
+
+# # ensure it's a data frame
+# trpv1row <- as.data.frame(trpv1row)
+
+# transpose to make samples a column
+df <- data.frame(
+  sample = names(trpv1row),
+  count = as.numeric(trpv1row)
+)
+
+df# 
+
+
+
+# bar plot
+n <- ggplot(df, aes(x = sample, y = count)) +
+  geom_col(fill = "steelblue", width = 0.6) +
+  labs(title = "Norm. Trpv1 expression counts (before rlog)",
+       x = "Sample",
+       y = "Normalized count") +
+  theme_minimal(base_size = 14) +
+  theme(axis.text.x = element_text(size = 14, angle = 90, vjust = 0.5, hjust = 1))
+
+ggsave(filename = "trpv1countsNORM.pdf", plot = n, width = 20, height = 10)
+
+
+#########
 rld <- rlogTransformation(dds, blind = TRUE)
+
 # blind = TRUE means:
 # The transformation does not use information about the experimental design (i.e., group labels).
 # So it's "blind" to the condition (like control vs. treatment).
@@ -374,6 +416,19 @@ dir()
 write.table(final_table, file = "norm_Wagner_CLP_TRPV1_2023_080525.txt", row.names = FALSE)
 # done file saving --------------------------------------------------------
 
+## look at norm genes 
+
+norm_counts <- read.table("norm_Wagner_CLP_TRPV1_2023_080525.txt", header = TRUE, check.names = FALSE)
+
+dim(norm_counts)
+summary(norm_counts)
+names(norm_counts)
+
+head(norm_counts)
+
+trpv1 <- norm_counts[norm_counts$gene_symbol == "Trpv1", ]
+
+trpv1
 
 # ============================================================
 # SAMPLE-LEVEL HEATMAP AND PCA (EXPLORATORY)
