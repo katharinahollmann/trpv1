@@ -1,8 +1,8 @@
 ################################################################################################
-# ENRICHR SCRIPT — EXPLAINED — xx KH
+# ENRICHR SCRIPT — EXPLAINED — KH
 # TRPV1 RNA-seq | Enrichr-based functional enrichment
 #
-# Notes on key objects (preserved):
+# Notes on key objects:
 # - ll1 : directory listing
 # - sm  : chosen DEG file (character path)
 # - nam1: title derived from sm
