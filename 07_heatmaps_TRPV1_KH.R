@@ -4,9 +4,9 @@
 # intersect-gene set; uses gplots::heatmap.2
 #
 # Notes:
-# • Object names, filenames, and overall logic kept the same as your script.
+# • Object names, filenames, and overall logic kept the same.
 # • Reorganized and commented for clarity; no guarantees.
-# • Key variable legend (as you described originally):
+# • Key variable legend:
 #     dat1 -> gene_expr_data
 #     ta   -> metadata
 #     ta2  -> sorted_metadata
