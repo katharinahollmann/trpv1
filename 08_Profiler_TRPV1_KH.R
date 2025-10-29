@@ -1,5 +1,5 @@
 ################################################################################################
-# FUNCTIONAL ANALYSIS SCRIPT — EXPLAINED — xx KH
+# FUNCTIONAL ANALYSIS SCRIPT — EXPLAINED — KH
 # TRPV1 RNA-seq | GO enrichment with clusterProfiler
 #
 # Notes on key objects (preserved):
